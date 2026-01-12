@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --progress=false
+
+      - name: Build (production)
+        run: npm run build --if-present
+
+      - name: Verify build artifacts
+        run: |
+          echo "Checking for dist/tigerpaws-app/browser/404.html"
+          if [ -f dist/tigerpaws-app/browser/404.html ]; then
+            echo "404.html exists"
+          else
+            echo "ERROR: 404.html is missing" >&2
+            ls -al dist || true
+            exit 1
+          fi
+
+      - name: Upload browser dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-dist
+          path: dist/tigerpaws-app/browser
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    # only deploy on direct pushes to main (not PRs)
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download browser artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: browser-dist
+          path: browser-dist
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./browser-dist
+          publish_branch: gh-pages

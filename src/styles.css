@@ -1,0 +1,320 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+:host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(180deg,
+            var(--orange-red) 0%,
+            var(--vivid-pink) 50%,
+            var(--electric-violet) 100%);
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(90deg,
+            var(--orange-red) 0%,
+            var(--vivid-pink) 50%,
+            var(--electric-violet) 100%);
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+app-root {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: rgba(0, 0, 0, 0);
+    font-family: Arial;
+    color: #444;
+    margin: 0 auto;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #b90900;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #b90900;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    padding: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header {
+    background-color: #fff;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    padding-bottom: 0px;
+}
+
+.lnk {
+    cursor: pointer;
+}
+
+.lnk2 {
+    cursor: pointer;
+    color: #b90900;
+}
+
+h1 {
+    font-size: 3.125rem;
+    color: var(--gray-900);
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+}
+
+p {
+    margin: 0;
+    color: var(--gray-700);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #b90900;
+}
+
+main {
+    width: 90%;
+    margin: 0px auto 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
+    flex: 1;
+}
+
+.angular-logo {
+    max-height: 100px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    justify-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.left-side a {
+    display: flex;
+    color: #b90900;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: calc((2.8 - 1) * 1.2vw + 1rem);
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: end;
+    justify-items: center;
+    gap: 1rem;
+    flex: 1;
+    padding-top: 13px;
+}
+
+.right-side .header-nav {
+    text-align: right;
+    margin-left: auto;
+    padding-left: 5vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.right-side .header-nav-list {
+    display: inline-flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.header-nav-list>div {
+    white-space: nowrap;
+}
+
+.header-nav-list>div:not(.header-nav-item--folder) {
+    display: inline-flex;
+}
+
+.header-nav-item:not(:first-child):not(.header-actions-action--cart) {
+    margin-left: 2.5vw;
+}
+
+.header-nav-wrapper .header-nav-item a,
+.header-nav-wrapper .header-nav-item--active a {
+    color: #b90900;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: calc((var(--site-navigation-font-font-size-value) - 1) * 1.2vw + 1rem);
+}
+
+.right-side button {
+    width: 80px;
+    height: 30px;
+    background-color: #b90900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px),
+screen and (max-width: calc(1921.4px)) and (orientation: landscape) {
+
+    .header-nav-item,
+    .user-accounts-text-link,
+    .cart-style-text,
+    .icon-cart-quantity:not(.legacy-cart),
+    .language-picker {
+        font-size: calc((var(--site-navigation-font-font-size-value) - 1) * 1.2vw + 1rem);
+    }
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 0px 0;
+    margin-bottom: 1rem;
+}
+
+.content h1 {
+    margin-top: 1.75rem;
+}
+
+.content p {
+    margin-top: 1.5rem;
+}
+
+.divider {
+    width: 1px;
+    background: var(--red-to-pink-to-purple-vertical-gradient);
+    margin-inline: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.73rem;
+}
+
+.social-links path {
+    transition: fill 0.3s ease;
+    fill: #000;
+}
+
+.social-links a:hover svg,
+.social-links a:hover svg path {
+    fill: #b90900;
+}
+
+#footer {
+    background-color: #000;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+#footer .social-links {
+    justify-content: center;
+}
+
+#footer .social-links path {
+    transition: fill 0.3s ease;
+    fill: #fff;
+}
+
+#footer .social-links a:hover svg,
+#footer .social-links a:hover svg path {
+    fill: #b90900;
+}
+
+app-contact {
+    width: 80%;
+}
+
+@media screen and (max-width: 650px) {
+
+    .right-side {
+        display: none;
+    }
+
+    .content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .divider {
+        display: none;
+    }
+}

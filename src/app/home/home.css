@@ -1,0 +1,92 @@
+.divHome {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px 0px 0;
+    gap: 10px;
+    width: 100%;
+}
+
+.textTop {
+    font-size: 22px;
+    line-height: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 85%;
+}
+
+.divHome h5 {
+    color: #b90900;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 28px;
+    padding: 0;
+    margin: 0;
+}
+
+#divIntro {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: center;
+    padding: 40px 0px;
+    gap: 20px;
+    width: 100%;
+}
+
+#divIntro .leftImg {
+    display: flex;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#divIntro .rightContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0;
+}
+
+#divIntro .rightContent h2 {
+    color: #b90900;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: calc((4.1 - 1) * 1.2vw + 1rem);
+}
+
+#divIntro .rightContent p {
+    font-size: calc((1.7 - 1) * 1.2vw + 1rem);
+    line-height: 32px;
+}
+
+#divIntro .btnContact {
+    margin-top: 20px;
+    background-color: #b90900;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    width: fit-content;
+}
+
+@media screen and (max-width: 650px) {
+
+    #divIntro {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    #divIntro .leftImg {
+        max-width: 100%;
+        width: 100%;
+    }
+}

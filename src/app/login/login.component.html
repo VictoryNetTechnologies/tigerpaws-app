@@ -1,0 +1,7 @@
+<div class="divHome">
+    <h2>Login</h2>
+    <input id="username" type="text" [(ngModel)]="username" placeholder="Username" />
+    <input id="password" type="password" [(ngModel)]="password" placeholder="Password" />
+    <button (click)="login()">Login</button>
+    <p style="color:red">{{ error }}</p>
+</div>

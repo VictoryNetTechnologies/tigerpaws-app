@@ -1,0 +1,27 @@
+<div>
+  <h3>Contact Us</h3>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
+    <div class="half-fields">
+      <div class="fields">
+        <label for="first">First Name *</label>
+        <input id="first" formControlName="first" type="text" placeholder="First Name" />
+      </div>
+      <div class="fields">
+        <label for="last">Last Name</label>
+        <input id="last" formControlName="last" type="text" placeholder="Last Name" />
+      </div>
+    </div>
+    <label for="email">Email *</label>
+    <input id="email" formControlName="email" type="email" placeholder="Email" />
+
+    <label for="subject">Subject *</label>
+    <input id="subject" formControlName="subject" type="text" placeholder="Subject" />
+
+    <label for="message">Message *</label>
+    <textarea id="message" formControlName="message" rows="5" placeholder="Message"></textarea>
+
+    <button type="submit" [disabled]="submitting()">Submit</button>
+
+    <p *ngIf="submitResult()" class="submit-msg">{{ submitResult() }}</p>
+  </form>
+</div>

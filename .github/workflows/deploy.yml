@@ -1,0 +1,37 @@
+name: Deploy Angular app to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or 'master' if that's your default branch
+
+permissions:
+  contents: write  # needed to push to gh-pages branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular app
+        run: npm run build -- --base-href="/tigerpaws-app/"
+
+      - name: 🩹 Create 404.html for Angular routing
+        run: cp dist/tigerpaws-app/browser/index.html dist/tigerpaws-app/browser/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages       # target branch
+          folder: dist/tigerpaws-app/browser   # path to built app
